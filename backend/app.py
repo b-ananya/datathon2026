@@ -24,8 +24,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ---------- API ROUTES (FIRST) ----------
-
 @app.get("/maps-api-key")
 def get_maps_api_key():
     return {"key": os.getenv("GOOGLE_MAPS_API_KEY")}
@@ -43,8 +41,6 @@ def predict_route(route: RoutePoints):
     severity = predict_route_severity_risk(route.points)
     return {"severity": severity}
 
-# ---------- FRONTEND ----------
-
 @app.get("/")
 def serve_index():
     return FileResponse(FRONTEND_DIR / "index.html")
@@ -53,4 +49,5 @@ app.mount(
     "/static",
     StaticFiles(directory=FRONTEND_DIR),
     name="static",
+
 )
