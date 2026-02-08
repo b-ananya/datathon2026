@@ -6,7 +6,6 @@ let obstacles = [];
 let routeMarkers = [];
 let routePolyline;
 
-// -------------------- INIT MAP --------------------
 async function init() {
     const res = await fetch("/maps-api-key");
     const data = await res.json();
@@ -31,7 +30,6 @@ window.initMap = function () {
     loadObstacles();
 };
 
-// -------------------- LOAD HAZARDS --------------------
 async function loadObstacles() {
     const res = await fetch("/data/obstacles.json");
     const data = await res.json();
@@ -52,7 +50,6 @@ async function loadObstacles() {
     console.log("Loaded obstacles:", obstacles.length);
 }
 
-// -------------------- CALCULATE ROUTE --------------------
 function calculateRoute() {
     const start = document.getElementById("start").value;
     const end = document.getElementById("end").value;
@@ -76,7 +73,6 @@ function calculateRoute() {
     );
 }
 
-// -------------------- SAMPLE ROUTE --------------------
 function sampleRoute(route) {
     const path = route.overview_path;
     const sampled = [];
@@ -96,7 +92,6 @@ function sampleRoute(route) {
     return sampled;
 }
 
-// -------------------- FETCH ROUTE SEVERITY --------------------
 async function getRouteSeverity(points) {
     const res = await fetch("/predict-route-severity", {
         method: "POST",
@@ -107,7 +102,6 @@ async function getRouteSeverity(points) {
     return data.severity;
 }
 
-// -------------------- ANALYZE ROUTE --------------------
 async function analyzeRoute(route) {
     clearRouteMarkers();
     const sampledPoints = sampleRoute(route);
@@ -156,7 +150,6 @@ async function analyzeRoute(route) {
         `Hazards on route: ${count} | Average severity: ${avg} | Predicted severity: ${(severity*5).toFixed(2)}`;
 }
 
-// -------------------- HELPERS --------------------
 function clearRouteMarkers() {
     for (const m of routeMarkers) m.setMap(null);
     routeMarkers = [];
@@ -169,5 +162,4 @@ function getIcon(severity) {
     return `https://maps.google.com/mapfiles/ms/icons/${color}-dot.png`;
 }
 
-// -------------------- START --------------------
 init();
