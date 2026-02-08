@@ -16,6 +16,8 @@ https://walkability.framer.website/
 - Color-coded routes based on predicted risk  
 - Secure backend API for predictions and API key handling  
 
+## Video Demo
+[![Walkability Demo](https://img.youtube.com/vi/_59opXA7VVA/0.jpg)](https://www.youtube.com/watch?v=_59opXA7VVA)
 
 ## Requirements
 
