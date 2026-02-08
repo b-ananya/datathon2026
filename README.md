@@ -14,7 +14,11 @@ https://walkability.framer.website/
 - Real accessibility hazard visualization  
 - Machine learning–based route severity prediction  
 - Color-coded routes based on predicted risk  
-- Secure backend API for predictions and API key handling  
+- Secure backend API for predictions and API key handling
+
+## Performance
+- Root Mean Square Error: 0.0858 (How well the model predicts individual points.)
+- Margin of Error for MEAN ROUTE RISK: +/- 0.0013 (Our margin of error is small because it’s based on the average of many points along a route. This is the goal of our model!)
 
 ## Video Demo
 [![Walkability Demo](https://img.youtube.com/vi/_59opXA7VVA/0.jpg)](https://www.youtube.com/watch?v=_59opXA7VVA)
